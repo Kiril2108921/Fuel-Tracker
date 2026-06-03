@@ -74,6 +74,11 @@ body {
   margin-bottom: 1rem;
 }
 
+.calculator-title,
+.quick-title {
+  margin-top: 1rem;
+}
+
 /* Progress bars */
 .progress-grid {
   display: grid;
@@ -321,9 +326,41 @@ body {
   background: #2563eb;
 }
 
+.btn.full {
+  width: 100%;
+  margin-top: 0.75rem;
+}
+
 .btn.small {
   padding: 0.35rem 0.65rem;
   font-size: 0.75rem;
+}
+
+.settings-toggle {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: inherit;
+  width: 100%;
+  transition: all 0.15s;
+  margin-top: 1rem;
+}
+
+.settings-toggle:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: var(--accent-dim);
+}
+
+.calculator-preview {
+  color: var(--text-secondary);
+  font-size: 0.8rem;
+  font-variant-numeric: tabular-nums;
+  margin-top: 0.65rem;
 }
 
 .add-custom-btn {
@@ -348,28 +385,78 @@ body {
 
 /* Quick add suggestions */
 .quick-adds {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
   margin-top: 0.5rem;
 }
 
 .quick-add {
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid var(--border);
-  border-radius: 2rem;
-  padding: 0.3rem 0.7rem;
+  border-radius: 0.5rem;
+  padding: 0.55rem;
   font-size: 0.75rem;
   color: var(--text-secondary);
-  cursor: pointer;
   font-family: inherit;
   transition: all 0.15s;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 3.25rem 3rem;
+  gap: 0.4rem;
+  align-items: center;
 }
 
 .quick-add:hover {
   border-color: var(--accent);
-  color: var(--accent);
   background: var(--accent-dim);
+}
+
+.quick-add-info {
+  min-width: 0;
+}
+
+.quick-add-info span,
+.quick-add-info small {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.quick-add-info span {
+  color: var(--text);
+  font-weight: 500;
+}
+
+.quick-add-info small {
+  color: var(--text-secondary);
+  margin-top: 0.05rem;
+}
+
+.quick-add input {
+  width: 100%;
+  min-width: 0;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border);
+  border-radius: 0.35rem;
+  color: var(--text);
+  font: inherit;
+  padding: 0.35rem 0.4rem;
+  text-align: center;
+}
+
+.quick-add button {
+  background: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 0.35rem;
+  color: white;
+  cursor: pointer;
+  font: inherit;
+  padding: 0.35rem 0.45rem;
+}
+
+.quick-add button:hover {
+  background: #2563eb;
 }
 
 /* Meal divider */
@@ -381,10 +468,31 @@ body {
 
 /* Responsive */
 @media (max-width: 480px) {
+  body {
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
   .form-row.three {
     grid-template-columns: 1fr 1fr;
   }
+
   .progress-grid {
     grid-template-columns: 1fr;
+  }
+
+  .quick-adds {
+    grid-template-columns: 1fr;
+  }
+
+  .food-item {
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .food-macros {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.15rem;
   }
 }
